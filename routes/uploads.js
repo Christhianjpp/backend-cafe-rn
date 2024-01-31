@@ -9,21 +9,21 @@ const { coleccionesPermitidas } = require('../helpers');
 const router = Router();
 
 
-router.post( '/', validarArchivoSubir, cargarArchivo );
+router.post('/', validarArchivoSubir, cargarArchivo);
 
 router.put('/:coleccion/:id', [
     validarArchivoSubir,
-    check('id','El id debe de ser de mongo').isMongoId(),
-    check('coleccion').custom( c => coleccionesPermitidas( c, ['usuarios','productos'] ) ),
+    check('id', 'El id debe de ser de mongo').isMongoId(),
+    check('coleccion').custom(c => coleccionesPermitidas(c, ['usuarios', 'productos'])),
     validarCampos
-], actualizarImagenCloudinary )
+], actualizarImagenCloudinary)
 // ], actualizarImagen )
 
 router.get('/:coleccion/:id', [
-    check('id','El id debe de ser de mongo').isMongoId(),
-    check('coleccion').custom( c => coleccionesPermitidas( c, ['usuarios','productos'] ) ),
+    check('id', 'El id debe de ser de mongo').isMongoId(),
+    check('coleccion').custom(c => coleccionesPermitidas(c, ['usuarios', 'productos'])),
     validarCampos
-], mostrarImagen  )
+], mostrarImagen)
 
 
 
